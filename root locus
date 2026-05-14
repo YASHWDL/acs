@@ -1,0 +1,17 @@
+clc;
+clear;
+close all;
+% Define transfer function G(s)
+num = [1]; % Numerator
+den = conv([1 0], conv([1 2], [1 4])); % s(s+2)(s+4)
+G = tf(num, den);
+% Plot Root Locus
+figure;
+rlocus(G);
+grid on;
+title('Root Locus Plot - Program 1');
+% Display poles and zeros
+disp('Open Loop Poles:');
+pole(G);
+disp('Open Loop Zeros:');
+zero(G);
