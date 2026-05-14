@@ -1,0 +1,17 @@
+clc;
+clear;
+close all;
+% Define transfer function G(s)H(s) = 40 / [s(s+2)(s+20)]
+num = [40]; % Numerator is 40
+% Denominator: s*(s+2)*(s+20)
+den = conv([1 0], conv([1 2], [1 20]));
+% Create transfer function
+G = tf(num, den);
+% Plot Bode Plot
+figure;
+bode(G);
+grid on;
+title('Bode Plot');
+% Display Gain Margin and Phase Margin
+[gm, pm, wcg, wcp] = margin(G);disp(['Gain Margin: ', num2str(20*log10(gm)), ' dB']);
+disp(['Phase Margin: ', num2str(pm), ' degrees']);
