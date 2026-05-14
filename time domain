@@ -1,0 +1,18 @@
+clc;
+clear;
+close all;
+% Define numerator and denominator of transfer function
+num = [1];
+den = [1 4 5]; % Example: 1/(s^2 + 4s + 5)
+% Create transfer function
+sys = tf(num, den);
+% Plot step response
+figure;
+step(sys);
+grid on;
+title('Step Response');
+% Calculate time-domain specifications
+info = stepinfo(sys);
+% Display results
+disp('Time Domain Specifications:');
+disp(info);
