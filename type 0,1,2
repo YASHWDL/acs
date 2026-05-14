@@ -1,0 +1,16 @@
+Clc;
+Clear;
+Close all;
+Num = [1];
+Den = [1 3 2 0]; % Type 1 (one pole at origin)
+G = tf(num, den);
+Syms s
+Gs = poly2sym(num, s) / poly2sym(den, s);
+Kp = limit(Gs, s, 0);
+Kv = limit(s*Gs, s, 0);
+Ka = limit(s^2*Gs, s, 0);
+Ess_step = 1/(1 + Kp);
+Ess_ramp = 1/Kv;
+Ess_parabolic = 1/Ka;
+Disp(Kp); disp(Kv); disp(Ka);
+Disp(ess_step); disp(ess_ramp); disp(ess_parabolic);
